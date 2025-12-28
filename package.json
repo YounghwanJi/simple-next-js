@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "local": "next local",
     "dev": "next dev",
+    "qa": "next qa",
+    "stg": "next stg",
+    "prd": "next prd",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
