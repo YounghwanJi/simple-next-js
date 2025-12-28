@@ -1,13 +1,18 @@
+'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { NAV_LINKS } from '../../../shared/lib/constants';
 import { Button } from '../../../shared/ui/atoms/Button';
+import { useAuth } from '@/entities/user/model/auth-context';
 
 interface NavbarProps {
   isScrolled: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'bg-black/80 backdrop-blur-2xl border-b border-white/5 py-4' : 'bg-transparent py-10'}`}>
       <div className="max-w-7xl mx-auto px-8 md:px-12 flex items-center justify-between">
@@ -20,9 +25,9 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
 
         <div className="hidden lg:flex items-center gap-12">
           {NAV_LINKS.map((link) => (
-            <a 
-              key={link.label} 
-              href={link.href} 
+            <a
+              key={link.label}
+              href={link.href}
               className="text-xs font-bold tracking-widest text-zinc-500 hover:text-white transition-colors duration-300 uppercase"
             >
               {link.label}
@@ -31,9 +36,19 @@ export const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
         </div>
 
         <div className="flex items-center gap-6">
-          <Button variant="outline" size="sm" className="hidden sm:inline-flex">
-            Login
-          </Button>
+          {isAuthenticated ? (
+            <Link href="/dashboard">
+              <Button variant="outline" size="sm" className="hidden sm:inline-flex">
+                Dashboard
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/auth/login">
+              <Button variant="outline" size="sm" className="hidden sm:inline-flex">
+                Login
+              </Button>
+            </Link>
+          )}
           <Button variant="primary" size="sm" className="hidden sm:inline-flex">
             Apply for Beta
           </Button>

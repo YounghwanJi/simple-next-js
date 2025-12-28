@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(cat:*)",
+      "Bash(npm run lint)",
+      "Bash(cd:*)",
+      "Bash(dir:*)"
+    ]
+  }
+}
