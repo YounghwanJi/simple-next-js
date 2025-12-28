@@ -5,5 +5,6 @@ export const ENDPOINTS = {
   USERS: {
     CREATE: '/users',
     ME: '/users/me',
+    LIST: '/users',
   },
 } as const;

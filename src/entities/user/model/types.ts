@@ -5,6 +5,8 @@ export interface User {
   name: string;
   phoneNumber?: string;
   status: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export type UserRole = 'ADMIN' | 'USER';
